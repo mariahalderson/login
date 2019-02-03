@@ -9,8 +9,6 @@
          echo 'connect error!' . $exception->getMessage();
      }
 
-     if($pdo){
-       echo "connect";
-     }
+  
 
  ?>

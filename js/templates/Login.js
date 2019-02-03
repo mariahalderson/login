@@ -21,31 +21,18 @@ export default{
   methods:{
     login(){
       console.log("logging in");
-      let url = "http://localhost:8888/login/admin/scripts/login.php?user="+this.input.username;
+      let url = "./admin/scripts/login.php?user=mariah";
       console.log(url);
 
-      fetch("../login/admin/scripts/login_2.php?user="+this.input.user)
+      fetch(url)
       .then(res => res.json())
-        //.then(function(response){
-          //return(JSON.parse(response));
-        //})
-        .then(data => {//})
-          this.stuff = data[0];
-          //data = JSON.parse(data);
-          console.log(this.stuff);
-          // if (movie) {
-          //     console.log(data);
-          //     this.singleVidInfo = data[0];
-          //
-          // } else {
-          //     console.log(data);
-          //     this.vidinfo = data;
-          //   }
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
-
-  }
+      .then(data => {
+        this.stuff = data[0];
+        console.log(this.stuff);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+    }
 }
 }
