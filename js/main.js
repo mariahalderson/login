@@ -23,9 +23,13 @@ const vm = new Vue ({
     message: "Hello I am a message",
 		userinfo: []
   },
+	mounted(){
+		if (localStorage.getItem('userinfo')) this.userinfo = JSON.parse(localStorage.getItem('userinfo'));
+	},
 	methods:{
 		setuser(stuff){
 			this.userinfo = stuff;
+			localStorage.setItem('userinfo', JSON.stringify([this.userinfo.user_name, this.userinfo.user_last]));
 		}
 	},
 

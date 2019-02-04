@@ -42,7 +42,7 @@ export default{
           if(this.input.password == this.stuff.user_password){
             //this.message = "welcome, "+this.stuff.user_name;
             //this.loginAttempts =0;
-            this.$emit("user", this.stuff.user_name);
+            this.$emit("user", this.stuff);
             this.$router.replace({name:'home'});
           }else{
             this.message = "password does not match.";
