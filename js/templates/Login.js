@@ -28,6 +28,8 @@ export default{
 
       fetch(url)
       .then(res => res.json())
+      //.then(res => res.text())
+      //.then(text => console.log(text))
       .then(data => {
         if (data == false || data[0].length < 0) {
           console.log("Authentication failed, try again");

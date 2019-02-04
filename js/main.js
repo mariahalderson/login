@@ -29,7 +29,7 @@ const vm = new Vue ({
 	methods:{
 		setuser(stuff){
 			this.userinfo = stuff;
-			localStorage.setItem('userinfo', JSON.stringify([this.userinfo.user_name, this.userinfo.user_last]));
+			localStorage.setItem('userinfo', JSON.stringify([this.userinfo.user_name, this.userinfo.user_date]));
 		}
 	},
 

@@ -11,7 +11,7 @@ export default{
     //this.getInfo();
     // this.currentTime = new Date().toLocaleTimeString();
     this.currentTime = new Date().getHours();
-    this.lastTime = new Date();
+    //this.lastTime = new Date();
     this.checkTime();
     if (localStorage.getItem('userinfo')) this.userinfo = JSON.parse(localStorage.getItem('userinfo'));
   },

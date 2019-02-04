@@ -26,14 +26,9 @@ error_reporting(E_ALL);
 
   if(isset($_GET['user'])){
     $un = $_GET['user'];
-    print_r($data);
+    $data = get_user($pdo, $un);
     echo json_encode($data);
-
     set_new_time($pdo, $data);
   }
-
-
-
-
 
  ?>
