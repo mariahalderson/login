@@ -19,6 +19,13 @@ export default{
       message: ''
     }
   },
+  mounted(){
+    if(this.$parent.loggedout = true){
+      localStorage.clear();
+      this.stuff = ['empty'];
+      this.$emit("info", []);
+    }
+  },
 
   methods:{
     login(){

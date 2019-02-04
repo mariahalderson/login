@@ -41,7 +41,7 @@ export default{
     logout(){
       this.$emit("logout", true);
       this.userinfo=[];
-      localStorage.clear();
+      //localStorage.clear();
       this.$router.replace({name:'login'});
     }
   }

@@ -35,6 +35,9 @@ const vm = new Vue ({
 		},
 		logoutuser(bool){
 			this.loggedout = bool;
+		},
+		clearuserinfo(info){
+			this.userinfo = info;
 		}
 	},
 
