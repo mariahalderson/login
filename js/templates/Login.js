@@ -21,7 +21,9 @@ export default{
   },
   mounted(){
     if(this.$parent.loggedout = true){
+      //clear user data stored in browser
       localStorage.clear();
+      //clear user data stored in root component
       this.stuff = ['empty'];
       this.$emit("info", []);
     }
@@ -35,27 +37,25 @@ export default{
 
       fetch(url)
       .then(res => res.json())
-      //.then(res => res.text())
-      //.then(text => console.log(text))
       .then(data => {
         if (data == false || data[0].length < 0) {
+          //check if user exists
           console.log("Authentication failed, try again");
           this.message = "user not found";
-          // this.loginAttempts++;
-          // this.lockAccount();
         } else {
+          //populate array with user info if exists
           this.stuff = data[0];
           console.log(this.stuff);
-
           //check pw
           if(this.input.password == this.stuff.user_password){
-            //this.message = "welcome, "+this.stuff.user_name;
-            //this.loginAttempts =0;
+            //send user info to root component
             this.$emit("user", this.stuff);
             this.$emit("logout", false);
+            //send router to home
             this.$router.replace({name:'home'});
           }else{
             this.message = "password does not match.";
+            //+1 login attempts to lockout after 3 tries
             this.loginAttempts++;
             this.lockAccount();
           }

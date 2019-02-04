@@ -29,7 +29,7 @@ export default{
     //   // this.currentTime = new Date().toLocaleTimeString();
     // }
     checkTime(){
-      console.log(this.currentTime);
+      //change message based on time of day.
       if(this.currentTime < 12){
         this.message = "Good Morning, ";
       }else if(this.currentTime > 12 && this.currentTime < 18){
@@ -41,7 +41,6 @@ export default{
     logout(){
       this.$emit("logout", true);
       this.userinfo=[];
-      //localStorage.clear();
       this.$router.replace({name:'login'});
     }
   }
