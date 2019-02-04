@@ -15,21 +15,21 @@ error_reporting(E_ALL);
     return $results;
   }
 
-  function set_new_time($pdo){
+  function set_new_time($pdo, $user){
     date_default_timezone_set('America/New_York');
     $date = date('m/d/Y H:i:s');
-
-    $query = "UPDATE tbl_users SET user_date = '$date' WHERE user_id = 1";
+    $id = $user[0]['user_id'];
+    $query = "UPDATE tbl_users SET user_date = '$date' WHERE user_id = '$id'";
     $update_time = $pdo->query($query);
     $update_time->execute();
   }
 
   if(isset($_GET['user'])){
     $un = $_GET['user'];
-    $data = get_user($pdo, $un);
+    print_r($data);
     echo json_encode($data);
 
-    set_new_time($pdo);
+    set_new_time($pdo, $data);
   }
 
 
