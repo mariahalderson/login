@@ -14,7 +14,7 @@
   <main id="app">
     <h1> {{message}} </h1>
 
-  <router-view @user="setuser"></router-view>
+  <router-view @user="setuser" @logout="logoutuser"></router-view>
     <!-- <div class="form-container">
       <p> Please enter your credentials below or click Register to create an account. </p>
       <form action="#" method="#">

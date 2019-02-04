@@ -45,6 +45,7 @@ export default{
             //this.message = "welcome, "+this.stuff.user_name;
             //this.loginAttempts =0;
             this.$emit("user", this.stuff);
+            this.$emit("logout", false);
             this.$router.replace({name:'home'});
           }else{
             this.message = "password does not match.";

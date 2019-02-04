@@ -21,15 +21,20 @@ const vm = new Vue ({
 
   data:{
     message: "Hello I am a message",
-		userinfo: []
+		userinfo: [],
+		loggedout: true
   },
 	mounted(){
 		if (localStorage.getItem('userinfo')) this.userinfo = JSON.parse(localStorage.getItem('userinfo'));
+		//this.loggedout = false;
 	},
 	methods:{
 		setuser(stuff){
 			this.userinfo = stuff;
 			localStorage.setItem('userinfo', JSON.stringify([this.userinfo.user_name, this.userinfo.user_date]));
+		},
+		logoutuser(bool){
+			this.loggedout = bool;
 		}
 	},
 

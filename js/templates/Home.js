@@ -1,10 +1,10 @@
 export default{
   template: `
     <section id="home">
-
       <p>{{ message }} {{ userinfo[0] }}</p>
-
       <p>We haven't seen you since {{ userinfo[1] }}</p>
+
+      <a class="button" v-on:click="logout">logout</a>
     </section>
   `,
   mounted(){
@@ -31,12 +31,18 @@ export default{
     checkTime(){
       console.log(this.currentTime);
       if(this.currentTime < 12){
-        this.message = "Good Morning!";
+        this.message = "Good Morning, ";
       }else if(this.currentTime > 12 && this.currentTime < 18){
-        this.message = "Good Afternoon!";
+        this.message = "Good Afternoon, ";
       }else if(this.currentTime > 18){
-        this.message = "Good Evening!";
+        this.message = "Good Evening, ";
       }
+    },
+    logout(){
+      this.$emit("logout", true);
+      this.userinfo=[];
+      localStorage.clear();
+      this.$router.replace({name:'login'});
     }
   }
 }
