@@ -1,5 +1,4 @@
 export default{
-
   template: `
   <div class="form-container">
     <p> Please enter your credentials below or click Register to create an account. </p>
@@ -41,8 +40,10 @@ export default{
 
           //check pw
           if(this.input.password == this.stuff.user_password){
-            this.message = "welcome, "+this.stuff.user_name;
-            this.loginAttempts =0;
+            //this.message = "welcome, "+this.stuff.user_name;
+            //this.loginAttempts =0;
+            this.$emit("user", this.stuff.user_name);
+            this.$router.replace({name:'home'});
           }else{
             this.message = "password does not match.";
             this.loginAttempts++;
