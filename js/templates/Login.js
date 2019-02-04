@@ -32,12 +32,22 @@ export default{
       .then(data => {
         if (data == false || data[0].length < 0) {
           console.log("Authentication failed, try again");
-          this.loginAttempts++;
-          this.lockAccount();
+          this.message = "user not found";
+          // this.loginAttempts++;
+          // this.lockAccount();
         } else {
           this.stuff = data[0];
           console.log(this.stuff);
-          this.message = "welcome, "+this.stuff.user_name;
+
+          //check pw
+          if(this.input.password == this.stuff.user_password){
+            this.message = "welcome, "+this.stuff.user_name;
+            this.loginAttempts =0;
+          }else{
+            this.message = "password does not match.";
+            this.loginAttempts++;
+            this.lockAccount();
+          }
         }
       })
       .catch(function(error) {
