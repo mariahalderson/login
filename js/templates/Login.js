@@ -62,6 +62,24 @@ export default{
       }else{
         this.message = "attempts: "+this.loginAttempts;
       }
-    }
+    },
+
+    // saveLoginTime(){
+    //   var logintime = new Date();
+    //   let url = "./admin/scripts/login.php?logintime="+logintime;
+    //
+    //   fetch(url, {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Accept: "application/json, text-plain, */*",
+    //               "X-Requested-With": "XMLHttpRequest"
+    //     },
+    //     method: "post",
+    //     credentials: "same-origin",
+    //     body: JSON.stringify(data)
+    //     }).catch(function(error) {
+    //       console.log(error);
+    //     });
+    // }
   }
 }

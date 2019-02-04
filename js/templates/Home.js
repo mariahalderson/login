@@ -1,7 +1,7 @@
 export default{
   template: `
     <section id="home">
-  
+
       <p>{{ message }} {{ userinfo[0] }}</p>
 
       <p>We haven't seen you since {{ userinfo[1] }}</p>
@@ -11,6 +11,7 @@ export default{
     //this.getInfo();
     // this.currentTime = new Date().toLocaleTimeString();
     this.currentTime = new Date().getHours();
+    this.lastTime = new Date();
     this.checkTime();
     if (localStorage.getItem('userinfo')) this.userinfo = JSON.parse(localStorage.getItem('userinfo'));
   },
