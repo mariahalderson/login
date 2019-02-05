@@ -1,0 +1,110 @@
+.form-container {
+  position: relative;
+  padding: 50px;
+  width: 450px;
+  margin: 0 auto;
+}
+.form-container .image-container {
+  max-width: 300px;
+  margin: 0 auto;
+}
+.form-container .image-container img {
+  max-width: 100%;
+}
+.form-container form {
+  position: absolute;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+  top: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 50px 0;
+}
+.form-container form input {
+  padding: 7px;
+  width: 250px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #999;
+  margin-bottom: 25px;
+}
+.form-container form input:focus {
+  border: none;
+  border-bottom: 2px solid #4A4565;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: inset 0px 0px 24px -4px rgba(74, 69, 101, 0.08);
+  outline: none;
+}
+.form-container form .button {
+  margin-top: 0;
+}
+.form-container form .lockout {
+  color: red;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  font-weight: 100;
+  font-size: 12px;
+}
+
+#home {
+  max-width: 500px;
+  margin: 0 auto;
+}
+#home .image-container {
+  max-width: 350px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#home .image-container img {
+  max-width: 100%;
+}
+#home .subheading {
+  margin-bottom: 10px;
+}
+#home .lasttime {
+  font-size: 20px;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  margin: 0 0 50px 0;
+}
+#home .button {
+  display: block;
+  width: 100px;
+  margin: 50px auto 0 auto;
+}
+
+main {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 35px;
+  font-family: "Arial", sans-serif;
+  color: #4A4565;
+  text-align: center;
+}
+
+.subheading {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  color: #333;
+}
+
+.button {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  margin-top: 50px;
+  padding: 10px 50px;
+  background-color: #918BFF;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -28,7 +28,13 @@ error_reporting(E_ALL);
     $un = $_GET['user'];
     $data = get_user($pdo, $un);
     echo json_encode($data);
+  }
+
+  if(isset($_GET['pw'])){
+    if(strlen($_GET['pw'])>7){
+    $data = get_user($pdo, $un);
     set_new_time($pdo, $data);
+    }
   }
 
  ?>
