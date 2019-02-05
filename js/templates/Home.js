@@ -1,41 +1,43 @@
 export default{
   template: `
     <section id="home">
-      <p>{{ message }} {{ userinfo[0] }}</p>
-      <p>We haven't seen you since {{ userinfo[1] }}</p>
+      <p class="heading">{{ message }} {{ userinfo[0] }}</p>
+      <p class="subheading">We haven't seen you since</p>
+      <p class="lasttime">{{ userinfo[1] }}</p>
 
-      <a class="button" v-on:click="logout">logout</a>
+      <div class="image-container">
+        <img :src="'assets/images/'+timeImage" alt="image">
+      </div>
+
+      <a class="button" v-on:click="logout">LOGOUT</a>
     </section>
   `,
   mounted(){
-    //this.getInfo();
-    // this.currentTime = new Date().toLocaleTimeString();
     this.currentTime = new Date().getHours();
-    //this.lastTime = new Date();
     this.checkTime();
     if (localStorage.getItem('userinfo')) this.userinfo = JSON.parse(localStorage.getItem('userinfo'));
   },
   data(){
     return{
-      message: "Welcome home ",
+      message: "Welcome home, ",
       userinfo: [],
       lastTime: "",
-      currentTime: ""
+      currentTime: "",
+      timeImage: "night.svg"
     }
   },
   methods:{
-    // getInfo(){
-    //   //this.userinfo = this.$parent.userinfo;
-    //   // this.currentTime = new Date().toLocaleTimeString();
-    // }
     checkTime(){
       //change message based on time of day.
       if(this.currentTime < 12){
         this.message = "Good Morning, ";
+        this.timeImage = "morning.svg";
       }else if(this.currentTime > 12 && this.currentTime < 18){
         this.message = "Good Afternoon, ";
+        this.timeImage = "afternoon.svg";
       }else if(this.currentTime > 18){
         this.message = "Good Evening, ";
+        this.timeImage = "night.svg";
       }
     },
     logout(){

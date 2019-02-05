@@ -1,0 +1,34 @@
+@import 'colors';
+@import 'login';
+@import 'home';
+
+main{
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.heading{
+  font-size: 35px;
+  font-family: 'Arial', sans-serif;
+  color: #4A4565;
+  text-align: center;
+}
+
+.subheading{
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.button{
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  margin-top: 50px;
+  padding: 10px 50px;
+  background-color: $purple;
+  border: none;
+  border-radius: 25px;
+  color: #fff;
+  text-decoration: none;
+}

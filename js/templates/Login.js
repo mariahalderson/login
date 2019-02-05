@@ -1,13 +1,22 @@
 export default{
   template: `
   <div class="form-container">
-    <p> Please enter your credentials below or click Register to create an account. </p>
-    <form action="#" method="#">
-      <input type="text" name="name" placeholder="username" v-model="input.username" required>
+    <div class="image-container">
+      <img src="assets/images/login.svg" alt="login image">
+    </div>
+
+    <p class="heading">{{welcomemessage}}</p>
+    <p class="subheading">{{lockedoutmessage}}</p>
+    <p class="heading" id="locktimer"></p>
+
+    <form action="#" method="#" ref="loginform" id="loginform">
+      <input type="text" name="name" placeholder="username" v-model="input.username" autofocus="true" required>
       <input type="password" name="password" placeholder="password" v-model="input.password" required>
+
+      <p class="lockout">{{message}}</p>
+
       <button class="button" type="button" v-on:click="login()">LOGIN</button>
     </form>
-    <p>{{message}}</p>
   </div>
   `,
 
@@ -16,11 +25,19 @@ export default{
       input:{username:'', password:''},
       stuff: ['empty'],
       loginAttempts: 0,
-      message: ''
+      message: '',
+      welcomemessage: 'Welcome, please log in.',
+      unlocked: true,
+      lockedoutmessage: '',
+      lockedouttimer: 60,
+      locked: false
     }
   },
   mounted(){
-    if(this.$parent.loggedout = true){
+    //check if account should be locked
+    	if (localStorage.getItem('loginattempts')) this.loginAttempts = (localStorage.getItem('loginattempts'));
+
+      if(this.$parent.loggedout = true){
       //clear user data stored in browser
       localStorage.clear();
       //clear user data stored in root component
@@ -32,7 +49,9 @@ export default{
   methods:{
     login(){
       console.log("logging in");
-      let url = "./admin/scripts/login.php?user="+this.input.username;
+        let url = "./admin/scripts/login.php?user="+this.input.username+"&&pw="+this.input.password;
+        //let url = "./admin/scripts/login.php?user="+this.input.username+"&&pw=placeholder";
+
       console.log(url);
 
       fetch(url)
@@ -51,6 +70,11 @@ export default{
             //send user info to root component
             this.$emit("user", this.stuff);
             this.$emit("logout", false);
+
+            //reset lockout number
+            localStorage.setItem('loginattempts', (0));
+            this.loginAttempts = 0;
+
             //send router to home
             this.$router.replace({name:'home'});
           }else{
@@ -67,29 +91,33 @@ export default{
     },
 
     lockAccount(){
+      var count = 3-this.loginAttempts;
       if(this.loginAttempts > 2){
-        this.message = "locked out!!";
-      }else{
-        this.message = "attempts: "+this.loginAttempts;
-      }
-    },
+        this.unlocked = false;
+        this.locked=true;
+        this.lockedoutmessage = "Oops! Too many failed attemps. Try again in:"
 
-    // saveLoginTime(){
-    //   var logintime = new Date();
-    //   let url = "./admin/scripts/login.php?logintime="+logintime;
-    //
-    //   fetch(url, {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Accept: "application/json, text-plain, */*",
-    //               "X-Requested-With": "XMLHttpRequest"
-    //     },
-    //     method: "post",
-    //     credentials: "same-origin",
-    //     body: JSON.stringify(data)
-    //     }).catch(function(error) {
-    //       console.log(error);
-    //     });
-    // }
+        document.getElementById("locktimer").style.display="block";
+        document.getElementById("loginform").style.opacity=0;
+        var timer = 60;//this.lockedouttimer;
+        var x = setInterval(function() {
+          timer--;
+          document.getElementById("locktimer").innerHTML = timer;
+          console.log(timer);
+          if(timer<=1){
+            document.getElementById("loginform").style.opacity=1;
+            document.getElementById("locktimer").style.display="none";
+          }
+          if(timer<0){
+            clearInterval(x);
+          }
+        },1000);
+
+      }else{
+        this.message = "Wrong password. attempts left: "+count;
+        //saves attempts to keep count even on page refresh
+        localStorage.setItem('loginattempts', (this.loginAttempts));
+      }
+    }
   }
 }

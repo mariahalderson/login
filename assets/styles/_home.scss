@@ -1,0 +1,32 @@
+#home{
+  max-width: 500px;
+  margin: 0 auto;
+
+  .image-container{
+    max-width: 350px;
+    margin: 0 auto;
+    overflow: hidden;
+
+    img{
+      max-width: 100%;
+    }
+  }
+
+  .subheading{
+    margin-bottom: 10px;
+  }
+
+  .lasttime{
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin: 0 0 50px 0;
+  }
+
+  .button{
+    display: block;
+    width: 100px;
+    margin: 50px auto 0 auto;
+  }
+
+}

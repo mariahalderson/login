@@ -43,5 +43,4 @@ const vm = new Vue ({
 
 	router: router
 
-
 });
